@@ -1,0 +1,146 @@
+/* admin.css — Clean, Simple Admin Panel Styling */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header, footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
+
+section {
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #444;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+form {
+    margin-top: 30px;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+    padding: 8px;
+    margin: 10px 0;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+}
+
+button,
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+img {
+    max-width: 80px;
+    height: auto;
+    border-radius: 4px;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+<header style="position: relative;">
+    
+
+    <!-- Profile Image with Dropdown -->
+    <div class="profile-container">
+        <img src="img/<?= htmlspecialchars($profileImage) ?>" 
+             alt="Profile Image" 
+             class="profile-pic" id="profilePic" />
+
+        <div id="profileDropdown" class="dropdown-menu">
+            <a href="profile.php">👤 View Profile</a>
+            
+
+
+            <?php
+session_start();
+?>
+
+<?php if (isset($_SESSION['username'])): ?>
+    <div class="profile">
+        <p>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</p>
+        <?php if (!empty($_SESSION['image'])): ?>
+            <img src="img/<?= htmlspecialchars($_SESSION['image']) ?>" alt="Profile Picture" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
+        <?php endif; ?>
+    </div>
+<?php else: ?>
+    <p><a href="login.php">Login</a> to see your profile picture.</p>
+<?php endif; ?>
+
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>Explore Our Fashion Collection</h1>
+        <p>Stylish, Affordable, and Unique</p>
+        <a href="#gallery" class="btn-primary">View Gallery</a>
+    </section>
+</header>
